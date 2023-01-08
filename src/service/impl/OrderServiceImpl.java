@@ -7,14 +7,18 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import service.OrderService;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
+
 
 public class OrderServiceImpl implements OrderService {
 
     static Logger logger = LogManager.getLogger();
+
+    String dateTime = DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm:ss a")
+            .format(LocalDateTime.now());
     @Override
     public int calculateTotalPrice(Order order) {
         List<Carriage> list = order.getCarriages();
@@ -53,8 +57,17 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public String createDateForBill() {
+        String dateTime = DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm:ss a")
+                .format(LocalDateTime.now());
+        return dateTime;
+    }
+
+    @Override
     public String printBill(Order order) {
         StringBuilder bill = new StringBuilder();
+        bill.append("*".repeat(30)+"\n");
+        bill.append(dateTime + "\n");
         bill.append("*".repeat(30)+"\n");
         bill.append("Order: " + order.getOrderId() +"\n");
         bill.append("client: " + order.getCustomerId()+ "\n");
