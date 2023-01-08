@@ -10,8 +10,9 @@ public class GenerateId {
     }
 
     public static int generateNextId() {
-        if (orderId > MAX_VALUE)
+        if (orderId > MAX_VALUE) {
             orderId = MIN_VALUE;
+        }
         return orderId++;
     }
 }

@@ -10,6 +10,7 @@ import java.util.StringJoiner;
 import static util.GenerateId.generateNextId;
 
 public class Order {
+    static Logger logger = LogManager.getLogger();
     public static final int PRICE_FOR_REGISTRATION = 800;
     public static final int MAX_LENGTH_TRAIN_NAME = 20;
     public static final int MIN_LENGTH_TRAIN_NAME = 4;
@@ -22,20 +23,20 @@ public class Order {
     private Loco loco;
     private List<Carriage> carriages;
 
-    static Logger logger = LogManager.getLogger();
-
-    public Order(String customerId, String trainName, Loco loco, List<Carriage> carriages ) {
+    public Order(String customerId, String trainName, Loco loco, List<Carriage> carriages) {
         this.customerId = customerId;
-        if (!loco.equals(null)){
+        if (loco != null) {
             this.loco = loco;
-        }else{
-              logger.log(Level.ERROR, "Need at least one loco");  }
+        } else {
+            this.loco = Loco.LOCO_WITH_1LOCO;
+            logger.log(Level.ERROR, "Need at least one loco");
+        }
         this.carriages = carriages;
         this.orderId = generateNextId();
-        if (trainName.length()<=MAX_LENGTH_TRAIN_NAME&&trainName.length()>=MIN_LENGTH_TRAIN_NAME){
-        this.trainName = trainName;}
-        else{
-            this.trainName = CLIENT+orderId;
+        if (trainName.length() <= MAX_LENGTH_TRAIN_NAME && trainName.length() >= MIN_LENGTH_TRAIN_NAME) {
+            this.trainName = trainName;
+        } else {
+            this.trainName = CLIENT + orderId;
         }
     }
 

@@ -1,7 +1,16 @@
 <component name="libraryTable">
   <library name="log4j-api-2.19.0">
-    <CLASSES />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/log4j-api-2.19.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/log4j-core-2.19.0.jar!/" />
+      <root url="file://$PROJECT_DIR$" />
+      <root url="file://$PROJECT_DIR$" />
+    </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/src" />
+      <root url="file://$PROJECT_DIR$/test" />
+    </SOURCES>
+    <jarDirectory url="file://$PROJECT_DIR$" recursive="false" />
   </library>
 </component>
