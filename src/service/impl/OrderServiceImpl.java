@@ -16,9 +16,6 @@ public class OrderServiceImpl implements OrderService {
 
     static Logger logger = LogManager.getLogger();
 
-    String dateTime = DateTimeFormatter.ofPattern("MMM dd yyyy, hh:mm:ss a")
-            .format(LocalDateTime.now());
-
     @Override
     public int calculateTotalPrice(Order order) {
         List<Carriage> list = order.getCarriages();
